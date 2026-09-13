@@ -84,11 +84,13 @@ fetch("https://404-tradepulse-production.up.railway.app/signals")
    document.getElementById("btc-details").textContent = `Price: $${Number(data.BTC.price).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2})} | RSI: ${data.BTC.rsi} | Momentum: ${data.BTC.momentum}%`;
 document.getElementById("sol-details").textContent = `Price: $${Number(data.SOL.price).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})} | RSI: ${data.SOL.rsi} | Momentum: ${data.SOL.momentum}%`;
 document.getElementById("xrp-details").textContent = `Price: $${Number(data.XRP.price).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:4})} | RSI: ${data.XRP.rsi} | Momentum: ${data.XRP.momentum}%`;
-
-
+const signalColor = signal => signal === "BUY" ? "#22c55e" : signal === "SELL" ? "#ef4444" : "#d4a76a";
+document.getElementById("btc-signal").style.color = signalColor(data.BTC.signal);
     document.getElementById("btc-signal").textContent = data.BTC.signal;
     document.getElementById("sol-signal").textContent = data.SOL.signal;
+    document.getElementById("sol-signal").style.color = signalColor(data.SOL.signal);
     document.getElementById("xrp-signal").textContent = data.XRP.signal;
+    document.getElementById("xrp-signal").style.color = signalColor(data.XRP.signal);
     })
     .catch(error => console.log(error));
   </script>
