@@ -46,16 +46,19 @@ footer{text-align:center;padding:30px;color:#777;border-top:1px solid #33261d}
   <div class="card">
     <h3>BTC</h3>
     <p id="btc-signal">WAIT</p>
+    <p id="btc-details">Price: -- | RSI: -- | Momentum: --</p>
   </div>
 
   <div class="card">
     <h3>SOL</h3>
     <p id="sol-signal">WAIT</p>
+    <p id="sol-details">Price: -- | RSI: -- | Momentum: --</p>
   </div>
 
   <div class="card">
     <h3>XRP</h3>
     <p id="xrp-signal">WAIT</p>
+    <p id="xrp-details">Price: -- | RSI: -- | Momentum: --</p>
   </div>
 </div>
 <h2>Built for Crypto Traders</h2>
@@ -78,6 +81,9 @@ footer{text-align:center;padding:30px;color:#777;border-top:1px solid #33261d}
 fetch("https://404-tradepulse-production.up.railway.app/signals")
   .then(response => response.json())
   .then(data => {
+    document.getElementById("btc-details").textContent = `Price: $${data.BTC.price} | RSI: ${data.BTC.rsi} | Momentum: ${data.BTC.momentum}%`;
+    document.getElementById("sol-details").textContent = `Price: $${data.SOL.price} | RSI: ${data.SOL.rsi} | Momentum: ${data.SOL.momentum}%`;
+    document.getElementById("xrp-details").textContent = `Price: $${data.XRP.price} | RSI: ${data.XRP.rsi} | Momentum: ${data.XRP.momentum}%`;
     document.getElementById("btc-signal").textContent = data.BTC.signal;
     document.getElementById("sol-signal").textContent = data.SOL.signal;
     document.getElementById("xrp-signal").textContent = data.XRP.signal;
