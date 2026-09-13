@@ -76,7 +76,12 @@ footer{text-align:center;padding:30px;color:#777;border-top:1px solid #33261d}
 
   <script>
 fetch("https://404-tradepulse-production.up.railway.app/signals")
-  .then(data => console.log(data)) 
+  .then(response => response.json())
+  .then(data => {
+    document.getElementById("btc-signal").textContent = data.BTC.signal;
+    document.getElementById("sol-signal").textContent = data.SOL.signal;
+    document.getElementById("xrp-signal").textContent = data.XRP.signal;
+    })
     .catch(error => console.log(error));
   </script>
 </body>
